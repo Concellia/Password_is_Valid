@@ -1,23 +1,20 @@
 describe("Is password valid!!", function(){
     it("should be larger than 8 characters", function(){
-        let passwordchecker =passWordChecker("Tiyise")
-        expect(passwordchecker).toBe("Password invalid please enter a valid password!!");
+        expect(function(){passWordChecker("Tiyi1234")}).toThrow(new Error('Password invalid please enter a valid password!!'));
     })
     it("password should not be null", function(){
         let passwordchecker =passWordChecker("Tiyise123")
         expect(passwordchecker).toBe(true);
     })
     it("password should have at least one uppercase letter", function(){
-        let passwordchecker =passWordChecker("tiyise123")
-        expect(passwordchecker).toBe("Password invalid please enter a valid password!!");
+        expect(function(){passWordChecker("tiyi123")}).toThrow(new Error('Password invalid please enter a valid password!!'));
     })
     it("password should have at least one lowercase letter", function(){
     let passwordchecker =passWordChecker("Tiyise123")
     expect(passwordchecker).toBe(true);
     })
     it("password should have at least one number", function(){
-    let passwordchecker =passWordChecker("Tiyiselani")
-    expect(passwordchecker).toBe("Password invalid please enter a valid password!!");
+    expect(function(){passWordChecker("Tiyiselani")}).toThrow(new Error('Password invalid please enter a valid password!!'));
     })
 });
 describe("Is password ok!!", function(){

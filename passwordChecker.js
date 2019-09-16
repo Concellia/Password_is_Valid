@@ -1,33 +1,32 @@
 function passWordChecker(password){
   let regex = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]{9,}/;
    
-      if(regex.test(password) === false){
-        return  "Password invalid please enter a valid password!!"
-      } 
-      return regex.test(password);
+  if(regex.test(password) === false){
+    throw new Error("Password invalid please enter a valid password!!") 
+  } 
+  return regex.test(password);
   
 };
 
-
 function passwordIsOk(password){
-  let regex1 = /[a-zA-Z0-9]{9,}/;
-  let regex2 = /(?=.*[a-z])[a-z]+/;
-  let regex3 = /(?=.*[A-Z])[A-Z]+/;
-  let regex4 = /(?=.*[0-9])[0-9]+/;
+  let chacters = /[a-zA-Z0-9]{9,}/;
+  let smallLetters = /(?=.*[a-z])[a-z]+/;
+  let capitalLetters = /(?=.*[A-Z])[A-Z]+/;
+  let numbers = /(?=.*[0-9])[0-9]+/;
 
-   if(password != null && regex1.test(password) === true && regex2.test(password) === true){
-          return true
-      }
+  if(password != null && chacters.test(password) === true && smallLetters.test(password) === true){
+    return true
+  }
           
-  if(password != null &&  regex1.test(password)  === true &&  regex3.test(password) === true){
-          return true
-      }
-  if(password != null &&  regex1.test(password) === true &&  regex4.test(password) === true){
-          return true
-      }
+  if(password != null &&  chacters.test(password)  === true &&  capitalLetters.test(password) === true){
+    return true
+  }
+  if(password != null &&  chacters.test(password) === true &&  numbers.test(password) === true){
+    return true
+    }
   else
   {
-          return false
+  return false
    
   }
   
